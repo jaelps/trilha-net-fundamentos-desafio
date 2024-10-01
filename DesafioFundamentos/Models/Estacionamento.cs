@@ -1,3 +1,4 @@
+using System.Data;
 using System.Diagnostics.Contracts;
 
 namespace DesafioFundamentos.Models
@@ -48,14 +49,20 @@ namespace DesafioFundamentos.Models
                 // TODO: Realizar o seguinte cálculo: "precoInicial + precoPorHora * horas" para a variável valorTotal                
                 // *IMPLEMENTE AQUI*
                 int horas = 0;
-                decimal valorTotal = 0; 
-                horas = Console.Read();
-                valorTotal = precoInicial + precoPorHora * horas;
-
+                decimal valorTotal = 0;
+                string entrada = Console.ReadLine();
+                horas = int.Parse(entrada);
+                valorTotal = precoInicial + (precoPorHora * horas);
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
+                //veiculos.Remove(placa);
+                Console.WriteLine($"Valor total a ser pago é de: R$ {valorTotal}");
+                Console.WriteLine("Digite qualquer tecla para confirmar o pagamento");
+                Console.ReadLine();
+                Console.WriteLine("Pagamento confirmado");
+                Console.WriteLine("Volte sempre");
+                veiculos.Remove(placa);
 
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {valorTotal}");
             }
             else
             {

@@ -1,3 +1,5 @@
+using System.Diagnostics.Contracts;
+
 namespace DesafioFundamentos.Models
 {
     public class Estacionamento
@@ -16,8 +18,9 @@ namespace DesafioFundamentos.Models
         {
             // TODO: Pedir para o usuário digitar uma placa (ReadLine) e adicionar na lista "veiculos"
             // *IMPLEMENTE AQUI*
-            string adincionandoVeiculo = Console.ReadLine();
-            veiculos.Add(adincionandoVeiculo);
+            Console.WriteLine("Favor informe a placa do carro: ");
+            string adincionandoPlaca = Console.ReadLine();
+            veiculos.Add(adincionandoPlaca);
         }
 
         public void RemoverVeiculo()
@@ -26,9 +29,17 @@ namespace DesafioFundamentos.Models
 
             // Pedir para o usuário digitar a placa e armazenar na variável placa
             // *IMPLEMENTE AQUI*
-            string placa = "";
+            string placa = Console.ReadLine();
 
             // Verifica se o veículo existe
+            if (veiculos.Contains(placa)){
+                Console.WriteLine($"Iten {placa} encontrado");
+            } 
+            else 
+            {
+                Console.WriteLine("Iten não encontrado na lista");
+            };
+
             if (veiculos.Any(x => x.ToUpper() == placa.ToUpper()))
             {
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
@@ -38,6 +49,8 @@ namespace DesafioFundamentos.Models
                 // *IMPLEMENTE AQUI*
                 int horas = 0;
                 decimal valorTotal = 0; 
+                horas = Console.Read();
+                valorTotal = precoInicial + precoPorHora * horas;
 
                 // TODO: Remover a placa digitada da lista de veículos
                 // *IMPLEMENTE AQUI*
@@ -58,6 +71,10 @@ namespace DesafioFundamentos.Models
                 Console.WriteLine("Os veículos estacionados são:");
                 // TODO: Realizar um laço de repetição, exibindo os veículos estacionados
                 // *IMPLEMENTE AQUI*
+                foreach(var veiculo in veiculos)
+                {
+                    Console.WriteLine($"[{veiculo}]");
+                }
             }
             else
             {
